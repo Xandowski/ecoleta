@@ -1,0 +1,100 @@
+#page-home {
+  height: 100vh;
+  background-image: url('/assets/bg-home.svg');
+  background-repeat: no-repeat;
+  background-position: center 25vh;
+}
+
+#page-home .content {
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#page-home .content header{
+  margin-top: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* padding: 0 40px 0 40px; */
+}
+
+#page-home header a{
+  font-weight: 700;
+  color: var(--title-color);
+  display: flex;
+}
+
+#page-home header a .signup{
+  margin-right: 16px;
+  display: flex;
+  background-image: url('/assets/log-in.svg');
+  width: 20px;
+  height: 20px;
+}
+
+#page-home main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#page-home main h1 {
+  font-size: 54.6px;
+}
+
+#page-home main .test {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#page-home main .test p {
+  font-size: 24px;
+  line-height: 38px;
+}
+
+#page-home main a {
+  width: 100%;
+  max-width: 360px;
+  height: 72px;
+  background-color: var(--primary-color);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  color: white;
+  margin-bottom: 40px;
+}
+
+#page-home main a:hover {
+  background-color: rgb(13, 216, 175);
+  transition: 400ms;
+}
+
+#page-home main a .search {
+  width: 72px;
+  height: 72px;
+  border-radius: 8px 0 0 8px ;
+  background-color: rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#page-home main a .search::after {
+  content: "";
+  background-image: url('/assets/search.svg');
+  width: 20px;
+  height: 20px;
+}
+
+#page-home main a strong {
+  flex: 1;
+  text-align: center;
+}

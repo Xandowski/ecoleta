@@ -1,11 +1,13 @@
 :root {
   --title-color: #322153;
   --primary-color: #0CC19E;
+  --primary-color-dark: rgb(9, 155, 126);
 }
 
 *{
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 html{

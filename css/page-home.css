@@ -73,8 +73,8 @@
 }
 
 #page-home main a:hover {
-  background-color: rgb(13, 216, 175);
-  transition: 400ms;
+  background-color: var(--primary-color-dark);
+  transition: background-color 400ms;
 }
 
 #page-home main a .search {

@@ -112,7 +112,7 @@ const CreatePoint = () => {
       setSelectedItems([ ...selectedItems, id ]);
     }
 
-   
+  
   }
 
   async function handleSubmit(event: FormEvent) {

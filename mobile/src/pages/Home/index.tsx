@@ -26,7 +26,6 @@ const Home = () => {
 
   const [coordinates, setCoordinates] =  useState<[number, number]>([0,0]);
 
-
   useEffect(() => {
     axios.get<IBGEUFResponse[]>('https://servicodados.ibge.gov.br/api/v1/localidades/estados')
       .then(response => {
@@ -59,8 +58,13 @@ const Home = () => {
   }, [selectedCity])
   
 
-  function handleNavigateToPoints(latitude: number, longitude: number) {
-    navigation.navigate('Points', { lat: latitude, lon: longitude});
+  function handleNavigateToPoints(latitude: number, longitude: number, uf: string, city: string) {
+    navigation.navigate('Points', { 
+      lat: latitude,
+      lon: longitude,
+      uf: uf,
+      city: city,
+    });
   }
 
   function handleSelectUF(value: string) {
@@ -74,7 +78,6 @@ const Home = () => {
 
     setSelectedCity(city);
   }
-
 
   return (
 
@@ -91,12 +94,14 @@ const Home = () => {
 
       <RNPickerSelect 
         onValueChange={( value ) => handleSelectUF(value)}
+        placeholder={{label: 'Selecione o estado'}}
         items={ufs.map(uf => (
-            { key: uf, label: uf, value: uf }
+            { key: uf, label: uf, value: uf}
           ))}
       />
       <RNPickerSelect 
         onValueChange={( value ) => handleSelectCity(value)}
+        placeholder={{label: 'Selecione a cidade'}}
         items={
           cities.map(city => (
             {key: city, label: city, value: city}
@@ -106,7 +111,10 @@ const Home = () => {
 
 
       <View style={styles.footer}>
-        <RectButton style={styles.button} onPress={() => handleNavigateToPoints(coordinates[0], coordinates[1])}>
+        <RectButton
+          style={styles.button}
+          onPress={() => handleNavigateToPoints(coordinates[0], coordinates[1], selectedUf, selectedCity)}
+        >
           <View style={styles.buttonIcon}>
             <Text>
               <Icon name="arrow-right" color ="#FFF" size={24}/>
@@ -164,7 +172,7 @@ const styles = StyleSheet.create({
   },
 
   button: {
-    backgroundColor: '#34CB79',
+    backgroundColor: '#0CC19E',
     height: 60,
     flexDirection: 'row',
     borderRadius: 10,

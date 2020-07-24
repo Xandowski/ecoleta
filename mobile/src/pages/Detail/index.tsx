@@ -12,13 +12,13 @@ interface Params {
 
 interface Data {
   point: {
+    city: string;
+    email: string;
     image: string;
     image_url: string;
     name: string;
-    email: string;
-    whatsapp: string;
-    city: string;
     uf: string;
+    whatsapp: string;
   };
   items: {
     title: string;
@@ -33,10 +33,12 @@ const Detail = () => {
   const routeParams = route.params as Params;
 
   useEffect(() => {
-    api.get(`points/${routeParams.point_id}`).then(response => {
+    api.get(`points/4`).then(response => {
       setData(response.data);
     });
   }, [])
+
+  console.log(data)
 
   function handleNavigateBack() {
     navigation.goBack();
@@ -49,10 +51,10 @@ const Detail = () => {
   function handleComposeMail() {
     MailComposer.composeAsync({
       subject: 'Interesse na coleta de residuos',
-      recipients: [data.point.email],
+      recipients: [data.point.email]
     });
   }
-
+  
   if(!data.point){
     return null;
   }
@@ -64,9 +66,9 @@ const Detail = () => {
           <Icon name="arrow-left" size={20} color="#34cb79"/>
         </TouchableOpacity>
 
-        <Image style={styles.pointImage} source={{ uri: data.point.image_url }}/>
+        <Image style={styles.pointImage} source={{ uri: 'https://images.unsplash.com/photo-1578916171728-46686eac8d58?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=60' }}/>
 
-  <Text style={styles.pointName}>{data.point.name}</Text>
+        <Text style={styles.pointName}>{data.point.name}</Text>
         <Text style={styles.pointItems}>
           {data.items.map(item => item.title).join(', ')}
         </Text>

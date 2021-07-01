@@ -1,5 +1,4 @@
 version: 2
-updates:
   - package-ecosystem: npm
     directory: "/"
     schedule:
@@ -14,6 +13,3 @@ updates:
     schedule:
       interval: "daily"
       
-  - name: Auto approve/merge Dependabot (native) PR
-    uses: Yproximite/auto-approve-and-merge-dependabot-action@v0.1.0
-

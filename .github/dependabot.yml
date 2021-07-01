@@ -4,3 +4,12 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
+    directory: "/web"
+    schedule:
+      interval: "daily"
+    directory: "/server"
+    schedule:
+      interval: "daily"
+    directory: "/mobile"
+    schedule:
+      interval: "daily"

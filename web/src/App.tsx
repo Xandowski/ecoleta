@@ -1,12 +1,17 @@
-import React from 'react';
-import './App.css';
+import Index from './pages/index'
+import { GlobalStyles } from './styles/global'
+import { ThemeProvider } from 'styled-components';
 
-import Routes from './routes';
+import light from './styles/themes/light'
 
 function App() {
+
   return (
-    <Routes />
-  );
+    <ThemeProvider theme={light}>
+        <GlobalStyles />
+        <Index/>
+    </ThemeProvider>
+  )
 }
 
-export default App;
+export default App

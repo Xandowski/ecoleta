@@ -17,7 +17,7 @@ const Main = styled.main`
             flex-direction: column;
             justify-content: space-between;
 
-            button {
+            a {
                 align-self: center;
             }
 
@@ -48,7 +48,7 @@ const Main = styled.main`
                 line-height: 2.5rem;
             }
 
-            button {
+            a {
                 align-self: flex-start;
             }
 

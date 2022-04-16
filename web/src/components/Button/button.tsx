@@ -1,11 +1,12 @@
 import styled from 'styled-components'
-
+import {Link} from 'react-router-dom'
 interface ButtonProps {
+    to: string
     size: string
     children: React.ReactNode
   }
 
-const ButtonStyle = styled.button<ButtonProps>`
+const ButtonStyle = styled(Link)<ButtonProps>`
     background-color: ${({theme}) => theme.colors.buttonColor};
     width: ${ (props) => (props.size == 'home' ? "360px" : "266px")};
     height: ${ (props) => (props.size == 'home' ? "72px" : "56px")};
@@ -39,9 +40,9 @@ const ButtonStyle = styled.button<ButtonProps>`
     }
 `
 
-const Button: React.FC<ButtonProps> = ({size, children}: ButtonProps) => {
+const Button: React.FC<ButtonProps> = ({to, size, children}: ButtonProps) => {
     return (
-        <ButtonStyle size={size}>
+        <ButtonStyle to={to} size={size}>
             {children}
         </ButtonStyle>
     )

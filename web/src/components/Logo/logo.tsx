@@ -8,8 +8,14 @@ const LogoStyle = styled.img`
        margin: 0 0 0 25px;
     }
 
-    @media(min-width: 300px) {
-        margin: 46px 0 0 150px;
+    @media(min-width: 700px) {
+        margin: 35px 0 0 130px;
+      
+        width: 180px;
+    }
+    @media(min-width: 1024px) {
+        margin: 46px 0 0 160px;
+        width: 180px;
     }
 `
 

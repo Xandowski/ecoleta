@@ -34,10 +34,9 @@ const ButtonStyle = styled.button<ButtonProps>`
         justify-content: center;
     }
 
-    /* @media(max-width: 800px) {
-        flex-direction: column;
-        position: relative;
-    } */
+    &:hover {
+        cursor: pointer;
+    }
 `
 
 const Button: React.FC<ButtonProps> = ({size, children}: ButtonProps) => {

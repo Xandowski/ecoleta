@@ -14,7 +14,7 @@ model Point {
   id         Int      @id @default(autoincrement())
   image      String
   name       String
-  email      String
+  email      String   @unique
   whatsapp   String
   latitude   Decimal
   longitude  Decimal

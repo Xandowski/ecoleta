@@ -1,21 +1,19 @@
-import { Request, Response } from 'express';
-import knex from '../database/connection';
+import { Request, Response } from 'express'
+import { prismaClient } from '../database/prismaClient'
 
-class ItemsComtroller {
-  async index( request: Request, response: Response ) {
-    const items = await knex('items').select('*');
+export class ItemsController {
+  async index(request: Request, response: Response) {
   
+    const items = await prismaClient.item.findMany()
+
     const serializedItems = items.map(item => {
-      return { 
+      return {
         id: item.id,
         title: item.title,
-        image_url: `http://192.168.0.105:3333/uploads/${item.image}`,
-        // image_url: `http://localhost:3333/uploads/${item.image}`
-       };
-    });
-  
-    return response.json(serializedItems);
+        image_url: `http://localhost:3333/uploads/${item.image}`
+      }
+    })
+
+    return response.json(serializedItems)
   }
 }
-
-export default ItemsComtroller;

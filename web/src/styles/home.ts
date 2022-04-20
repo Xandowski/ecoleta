@@ -1,84 +1,117 @@
 import styled from 'styled-components'
-import Bg from '../assets/bg-home.svg'
 
 const Main = styled.main`
-    width: 100vw;
-    height: 90vh;
+    height: calc(100vh - 121px);
+    
+    display: flex;
+    flex-wrap: wrap;
+
+    h1 {
+        font-family: ${({theme}) => theme.fonts.title};
+        font-weight: 700 bold;
+        font-size: 1.8rem;
+        line-height: 2rem;
+        color: ${({theme}) => theme.colors.title};
+    }
+
+    p {
+        font-family: ${({theme}) => theme.fonts.text};
+        font-weight: 400;
+        font-size: 0.9rem;
+        color: ${({theme}) => theme.colors.text};
+    }
+    
+    section:nth-child(2) {
+        img {
+            width: 100%;
+        }
+    }
+
     @media(min-width: 300px) {
-        background-image: url(${Bg});
-        background-repeat: no-repeat;
-        background-size: 100vw;
-        background-position: bottom;
-        padding: 25px 25px 0 25px;
+        padding: 0 27px;
+        section {
+            display: flex;
+            width: 100%;
+            h1, p {
+                width: 266px;
+            }
+        }
 
         section:nth-child(1) {
-            height: 50%;
-            display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: space-around;
+           
+        }
 
-            a {
-                align-self: center;
-            }
-
-            h1 {
-                font-family: ${({theme}) => theme.fonts.title};
-                font-weight: 700;
-                font-size: 1.8rem;
-                line-height: 2rem;
-                color: ${({theme}) => theme.colors.title};
-            }
-
-            p {
-                font-family: ${({theme}) => theme.fonts.text};
-                font-weight: 400;
-                font-size: 0.9rem;
-                color: ${({theme}) => theme.colors.text};
-            }
+        section:nth-child(2) {
+            justify-content: center;
+            align-items: flex-end;
         }
     }
 
     @media(min-width: 700px) {
-        padding: 60px 130px 0 130px;
-        background-size: 100vw 45vh;
-        
+        padding: 0 50px;
+        align-items: center;
         section:nth-child(1) {
-            h1 {
-                font-size: 2rem;
-                line-height: 2.5rem;
+            justify-content: center;
+
+            h1, p {
+                width: 100%;
+                margin-bottom: 24px;
             }
 
-            a {
-                align-self: flex-start;
+            
+            p{
+                font-size: 1.150rem;
             }
 
-            p {
-                font-size: 1.2rem;
+            > a {
+                margin-top: 16px;
             }
+           
+        }
+
+        section {
+            width: 50%;
+            height: 100%;
+        }
+        section:nth-child(2) {
+            align-items: center;
         }
     }
 
-    @media(min-width: 1024px) {
-        display: flex;
-        padding: 70px 160px 0 160px;
-        background-repeat: no-repeat;
-        background-position: top right 150px;
-        background-size: 45vw;
+    @media(min-width: 1440px) {
+        padding: 0 160px;
         section:nth-child(1) {
-            align-items: flex-start;
-            width: 50%;
-
             h1 {
                 font-size: 3.1rem;
                 line-height: 4rem;
             }
 
             p {
-                font-size: 1.4rem;
-                /* width: 85%; */
+                font-size: 2.3rem;
+            }
+
+            h1 {
+                font-size: 4rem;
+            }
+
+        }
+    }
+
+    @media(min-width: 1024px){
+        padding: 0 100px;
+        
+        section:nth-child(1) {
+            > a {
+                margin-top: 16px;
             }
         }
     }
+
 `
 
 export default Main
+
+
+

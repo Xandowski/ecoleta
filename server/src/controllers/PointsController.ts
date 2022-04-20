@@ -2,10 +2,36 @@ import { PointItem } from '@prisma/client'
 import { Request, Response } from 'express'
 import { prismaClient } from '../database/prismaClient'
 
+export interface TypedRequestBody<T> extends Express.Request {
+    body: T
+}
+
 export class PointsController {
-  async create( request: Request, response: Response) {
-    const  {
-        image,
+  async index (request: Request, response: Response) {
+    const { city, uf, items } = request.body
+    
+    const points = await prismaClient.point.findMany({
+      include: {
+        PointItem: true
+      }
+    })
+   
+   return response.json(points)
+  }
+
+  async create( request: TypedRequestBody<{
+    image: string
+    name: string
+    email: string
+    whatsapp: string
+    latitude: string
+    longitude: string
+    city: string
+    uf: string
+    items: string
+  }>, response: Response) {
+    if (request.file?.filename) {
+      let  {
         name, 
         email, 
         whatsapp, 
@@ -14,39 +40,40 @@ export class PointsController {
         city, 
         uf,
         items
-    } = request.body
-    
-    const pointItems: PointItem[] = items
-      .split(',')
-      .map((item: string) => Number(item.trim()))
-      .map((itemId: number) => {
-        return {
-          itemId
-        }
-    })
+      } = request.body
+      
+      const pointItems: Omit<PointItem, 'pointId'|'id'>[] = items
+        .split(',')
+        .map((item: string) => Number(item.trim()))
+        .map((itemId: number) => {
+          return {
+            itemId
+          }
+      })
 
-    const createPoint = prismaClient.point.create({
-      data: {
-        image,
-        name,
-        email, 
-        whatsapp, 
-        latitude, 
-        longitude, 
-        city, 
-        uf,
-        PointItem: {
-          createMany: {
-            data: [
-              ...pointItems
-            ]
+      const createPoint = prismaClient.point.create({
+        data: {
+          image: request.file?.filename,
+          name,
+          email, 
+          whatsapp, 
+          latitude, 
+          longitude, 
+          city, 
+          uf,
+          PointItem: {
+            createMany: {
+              data: [
+                ...pointItems
+              ]
+            }
           }
         }
-      }
-    })
+      })
 
-    return response.json({
-      ... await createPoint
-    })
+      return response.json({
+        ... await createPoint
+      })
+    }
   }
 }

@@ -1,6 +1,8 @@
+import { Nav } from "../../components/NavBar/navbar"
+
 const CreatePoint = () => {
   return(
-    <h1>Hello Create Point Page</h1>
+    <Nav/>
   )
 }
 

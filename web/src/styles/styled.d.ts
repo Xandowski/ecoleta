@@ -15,6 +15,8 @@ declare module 'styled-components' {
       background: string
       buttonColor: string
       buttonColorDark: string
+      secondaryButtonColor: string
+      secondaryButtonColorDark: string
       text: string
       title: string
     }

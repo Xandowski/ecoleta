@@ -6,18 +6,21 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
-
+  html,
+  body{
+    height: 100vh;
+  }
   a {
     text-decoration: none;
   }
 
   body {
-    width: 100vw;
     background-color: ${({ theme }) => theme.colors.background};
-    height: 100vh;
-
+    /* overflow-y: hidden; */
     div{
       height: 100vh;
+      overflow: auto;
+      /* overflow-y: hidden; */
     }
   }
 `

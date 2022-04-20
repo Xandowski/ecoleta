@@ -1,4 +1,3 @@
-import Index from './pages/index'
 import { GlobalStyles } from './styles/global'
 import { ThemeProvider } from 'styled-components';
 

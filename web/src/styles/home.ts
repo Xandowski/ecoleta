@@ -3,20 +3,15 @@ import styled from 'styled-components'
 const Main = styled.main`
     height: calc(100vh - 121px);
     
-    display: flex;
     flex-wrap: wrap;
 
     h1 {
-        font-family: ${({theme}) => theme.fonts.title};
-        font-weight: 700 bold;
         font-size: 1.8rem;
         line-height: 2rem;
         color: ${({theme}) => theme.colors.title};
     }
 
     p {
-        font-family: ${({theme}) => theme.fonts.text};
-        font-weight: 400;
         font-size: 0.9rem;
         color: ${({theme}) => theme.colors.text};
     }
@@ -94,6 +89,10 @@ const Main = styled.main`
 
             h1 {
                 font-size: 4rem;
+            }
+            
+            > a {
+                margin-top: 16px;
             }
 
         }

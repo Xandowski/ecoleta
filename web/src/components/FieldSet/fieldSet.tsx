@@ -2,13 +2,20 @@ import { FieldValues, UseFormRegister } from 'react-hook-form'
 import styled from 'styled-components'
 
 type FieldSetProps = {
-  htmlFor: string
-  title: string
+  htmlFor?: string
+  title?: string
   placeholder?: string
   register: UseFormRegister<FieldValues>
+  children?: React.ReactNode | string
 }
 
-const FieldSetStyle = styled.fieldset`
+const Input = styled.input.attrs({
+  type: "checkbox"
+})``
+
+
+
+const FieldSetStyle = styled.fieldset<FieldSetProps>`
   border: none;
   width: 100%;
   
@@ -16,6 +23,7 @@ const FieldSetStyle = styled.fieldset`
     border: none;
     border-radius: 8px;
     background-color: ${({theme}) => theme.colors.background};
+    background-size: contain;
     padding: 5px;
     margin-top: 8px;
     height: 56px;
@@ -31,6 +39,31 @@ const FieldSetStyle = styled.fieldset`
     display: flex;
     flex-direction: column;
     font-size: 0.875rem;
+    cursor:pointer;
+  }
+
+  input:checked + div{
+    border: 2px solid ${({theme}) => theme.colors.buttonColor};
+  }
+
+  :nth-child(10){
+    
+    display: block;
+  }
+
+  div {
+    background-color: ${({theme}) => theme.colors.itemBackground};
+    width: 192px;
+    height: 184px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 8px;
+
+    p {
+      font-size: 1rem;
+    }
   }
 
   input, label {
@@ -47,13 +80,25 @@ const FieldSetStyle = styled.fieldset`
   }
 ` 
 
-const FieldSet = ({htmlFor, title, placeholder, register}: FieldSetProps) => {
-  
+const FieldSet = ({htmlFor, title, placeholder, register, children}: FieldSetProps) => {
+  if(title){
+    return (
+      <FieldSetStyle>
+        <label htmlFor={htmlFor}>
+          {title}
+          <input {...register(`${htmlFor}`, { required: true })} placeholder={placeholder}/>
+        </label>
+      </FieldSetStyle>
+    )
+  }
+
   return (
     <FieldSetStyle>
-      <label htmlFor={htmlFor}>
-        {title}
-        <input {...register(`${htmlFor}`, { required: true })} placeholder={placeholder}/>
+      <label>
+        <Input {...register(`${htmlFor}`, { required: true })} hidden/>
+        <div>
+          {children}
+        </div>
       </label>
     </FieldSetStyle>
   )

@@ -1,5 +1,6 @@
 node_modules
 server_old/
+web_old/
 uploads/*
 !uploads/gitkeep
 .env

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const Main = styled.main`
-    height: calc(100vh - 121px);
+    height: 85vh;
     
     flex-wrap: wrap;
 
@@ -68,7 +68,7 @@ const Main = styled.main`
 
         section {
             width: 50%;
-            height: 100%;
+            height: 80%;
         }
         section:nth-child(2) {
             align-items: center;

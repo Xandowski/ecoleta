@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import styled from "styled-components"
-import Button, { ButtonProps } from "../Button/button"
+import Button, { ButtonProps } from "../Button"
 
 export interface NavProps extends ButtonProps  {
   title?: string

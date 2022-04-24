@@ -1,9 +1,9 @@
 
 import { useForm } from "react-hook-form"
 import styled from "styled-components"
-import { InputButton } from "../Button/button"
-import FieldSet from "../FieldSet/fieldSet"
-import { BaseFormStyle } from './CreateForm'
+import { InputButton } from "../../Button"
+import FieldSet from "../../FieldSet"
+import { BaseFormStyle } from '../CreateForm'
 
 export type FormProps = {
   children: JSX.Element[]

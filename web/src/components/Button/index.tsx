@@ -1,10 +1,7 @@
 import { Link } from 'react-router-dom'
 import styled, { css } from 'styled-components'
 
-type KnownTags = keyof JSX.IntrinsicElements
-
-interface ButtonProps {
-    as?: KnownTags
+export interface ButtonProps {
     to?: string
     color?: string
     size?: string
@@ -13,15 +10,15 @@ interface ButtonProps {
 
 const ButtonStyle = css<ButtonProps>`
     background-color: ${(props) => (props.color === 'green' ? ({theme}) => theme.colors.buttonColor : ({theme}) => theme.colors.secondaryButtonColor)};
-    width: ${ (props) => (props.size == 'home' ? "360px" : "266px")};
+    width: ${ (props) => (props.size == 'home' ? "360px" : "180px")};
     height: ${ (props) => (props.size == 'home' ? "72px" : "56px")};
     border: none;
-    font-family: ${({theme}) => theme.fonts.text};
     font-weight: ${({theme}) => theme.textWeight.title};
     font-size: 0.8rem;
     color: #FFF;
     display: flex;
     align-items: center;
+    justify-content: ${ (props) => (props.size == 'home' ? "normal" : "center")};
     border-radius: 8px;
 
     span:nth-child(1) {
@@ -40,6 +37,16 @@ const ButtonStyle = css<ButtonProps>`
         justify-content: center;
     }
 
+    @media (min-width: 300px) {
+        width: ${ (props) => (props.size == 'home' ? "266px" : "110px")};
+        height: ${ (props) => (props.size == 'home' ? "56px" : "44px")};
+    }
+
+    @media (min-width: 700px) {
+        width: ${ (props) => (props.size == 'home' ? "266px" : "120px")};
+        height: ${ (props) => (props.size == 'home' ? "56px" : "44px")};
+    }
+
     &:hover {
         cursor: pointer;
     }
@@ -49,7 +56,9 @@ export const LinkButton = styled(Link)`
     ${ButtonStyle}
 `
 
-export const InputButton = styled.input.attrs({ type: 'submit', value: 'Cadastrar ponto'})`
+export const InputButton = styled.input.attrs({ 
+    type: 'submit',
+})`
     ${ButtonStyle}
     justify-content: center;
 
@@ -58,7 +67,7 @@ export const InputButton = styled.input.attrs({ type: 'submit', value: 'Cadastra
     }
 `
 
-const Button = ({to, color, size, children, as}: ButtonProps) => {
+const Button = ({to, color, size, children}: ButtonProps) => {
     if (to) {
         return (
             <LinkButton to={to} color={color} size={size}>
@@ -68,8 +77,7 @@ const Button = ({to, color, size, children, as}: ButtonProps) => {
     }
 
     return (
-        <InputButton color={color} as={as}>
-            {children}
+        <InputButton color={color}>
         </InputButton>
     )
 }

@@ -1,10 +1,10 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Form, { Select } from "../../components/Form/FindForm";
-import Header from "../../components/Header/header";
-import Nav from "../../components/NavBar/navbar";
-import Section from "../../components/Section/section";
-import Main from "../../styles/createPoint";
+import Header from "../../components/Header";
+import Nav from "../../components/NavBar";
+import Section from "../../components/Section";
+import Main from "../CreatePoint/styles";
 
 export type UfsProps = {
   id: number

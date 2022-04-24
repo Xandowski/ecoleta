@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import Form from "../../components/Form/CreateForm";
-import Header from "../../components/Header/header";
-import Nav from "../../components/NavBar/navbar";
-import Section from "../../components/Section/section";
-import Main from "../../styles/createPoint";
+import Header from "../../components/Header";
+import Nav from "../../components/NavBar";
+import Section from "../../components/Section";
+import Main from "./styles";
 
 const CreatePoint = () => {
   useEffect(() => {

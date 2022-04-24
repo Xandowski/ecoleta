@@ -1,19 +1,17 @@
-import { FieldValues, UseFormRegister } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import styled from 'styled-components'
 
 type FieldSetProps = {
   htmlFor?: string
   title?: string
   placeholder?: string
-  register: UseFormRegister<FieldValues>
   children?: React.ReactNode | string
+  select?: boolean
 }
 
 const Input = styled.input.attrs({
   type: "checkbox"
 })``
-
-
 
 const FieldSetStyle = styled.fieldset<FieldSetProps>`
   border: none;
@@ -80,13 +78,24 @@ const FieldSetStyle = styled.fieldset<FieldSetProps>`
   }
 ` 
 
-const FieldSet = ({htmlFor, title, placeholder, register, children}: FieldSetProps) => {
+const FieldSet = ({htmlFor, title, placeholder, children, select}: FieldSetProps) => {
+  const { register } = useForm()
+
   if(title){
     return (
       <FieldSetStyle>
         <label htmlFor={htmlFor}>
           {title}
           <input {...register(`${htmlFor}`, { required: true })} placeholder={placeholder}/>
+        </label>
+      </FieldSetStyle>
+    )
+  }
+  else if (select) {
+    return (
+      <FieldSetStyle>
+        <label htmlFor={htmlFor}>
+          {children}
         </label>
       </FieldSetStyle>
     )

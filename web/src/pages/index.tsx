@@ -1,8 +1,8 @@
 import Bg from '../assets/bg-home.svg'
 import logIn from '../assets/log-in.svg'
-import Button from '../components/Button/button'
-import Header from '../components/Header/header'
-import Main from '../styles/home'
+import Button from '../components/Button'
+import Header from '../components/Header'
+import Main from './styles'
 
 const index = () => {
     return (

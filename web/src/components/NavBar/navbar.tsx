@@ -1,33 +1,42 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
-import Logo from '../Logo/logo'
-// import LeftArrow from '../../assets/leftArrow.svg'
+import Button, { ButtonProps } from "../Button/button"
+
+export interface NavProps extends ButtonProps  {
+  title?: string
+}
 
 export const NavBarStyle = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100vw;
-  background-color: ${({theme}) => theme.colors.background};
+
+  img {
+    width: 28px;
+  }
 
   @media(min-width: 300px) {
-    height: 60px;
-    span {
-      display: flex;
-      justify-content: space-between;
-      font-family: ${({theme}) => theme.fonts.text};
-      width: 100px;
-    }     
+    width: 150px;
+
+    a:first-child {
+      font-size: 0.875rem;
+    }
+  }
+
+  @media(min-width: 500px) {
+    width: 180px;
+
+    a:first-child {
+      font-size: 1.2rem;
+    }
   }
 `
 
-export const Nav = () => {
+export const Nav = ({to, color, title}:NavProps) => {
   return (
     <NavBarStyle>
-      <Logo/>
-      <span>
-        {/* <LeftArrow/> */}
-        Voltar para home
-      </span>
+      <Link to='/' >Início</Link>
+      <Button color={color} to={to} >{title}</Button>
     </NavBarStyle>
   )
 }

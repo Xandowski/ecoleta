@@ -13,6 +13,7 @@ declare module 'styled-components' {
     },
     colors: {
       background: string
+      itemBackground: string
       buttonColor: string
       buttonColorDark: string
       secondaryButtonColor: string

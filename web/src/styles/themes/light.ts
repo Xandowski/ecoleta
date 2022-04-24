@@ -12,6 +12,7 @@ const defaultTheme: DefaultTheme = {
     },
     colors: {
       background: '#F0F0F5',
+      itemBackground: '#E1FAEC',
       buttonColor: '#34CB79',
       buttonColorDark: '#2FB86E',
       secondaryButtonColor: '#8257E5',

@@ -3,10 +3,11 @@ import Logo from '../../assets/Logo.svg'
 
 export type HeaderProps = {
   children?: React.ReactNode | string
+  bg?: string
 }
 
 const HeaderStyle = styled.header<HeaderProps>`
-  background-color: white;
+  background-color: ${({bg}) => bg === 'white'? 'white' : '' };
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -38,11 +39,10 @@ const HeaderStyle = styled.header<HeaderProps>`
   }
 `
 
-
-const Header = ({children}: HeaderProps) => {
+const Header = ({children, bg}: HeaderProps) => {
   return (
-    <HeaderStyle >
-      <img src={Logo} alt="Logo" />
+    <HeaderStyle bg={bg}>
+      <img src={Logo} alt="Logo"/>
       {children}
     </HeaderStyle>
   )

@@ -7,17 +7,31 @@ export interface TypedRequestBody<T> extends Express.Request {
 }
 
 export class PointsController {
-  async index (request: Request, response: Response) {
-    const { city, uf, items } = request.body
-    
+  async index (request: Request, response: Response) { 
+    const { city, uf } = request.body
+
     const points = await prismaClient.point.findMany({
-      include: {
-        PointItem: true
+      where: {
+        city: city,
+        uf: uf
       }
     })
-   
-   return response.json(points)
+
+    if ( !points ) {
+      return response.status(400).json({ message: "This city doesn't have any point." })
+    }
+
+    const serializedPoints = points.map(point => {
+      return {
+        ...point,
+        image_url: `http://192.168.0.105:3333/uploads/${point.image}`,
+      }
+    })
+
+   return response.json(serializedPoints)
   }
+
+ 
 
   async create( request: TypedRequestBody<{
     image: string

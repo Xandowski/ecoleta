@@ -2,19 +2,23 @@
 
 Ecoleta is a marketplace to collect specific waste.
 
-Project developed on Next Level Week event.
+Project developed on Next Level Week 01 event by [RocketSeat](https://github.com/Rocketseat).🚀.
+
+The original project was to build a web application for registering recyclable garbage collection points and a mobile application in react native to list the registered points.
+I decided to create just one web application containing everything.
+
+Ecoleta 1.0
+[Layout](https://www.figma.com/file/9TlOcj6l7D05fZhU12xWT3/Ecoleta-(Booster)?node-id=0%3A1)
+
+Ecoleta 2.0
+[Layout](https://www.figma.com/file/C8tIRNrHkv3r0K6RNTgRXh/Ecoleta-(Booster)-2.0?node-id=4%3A450)
 
 ![](/web/src/assets/bg-home.svg)
 
 ## Technologies
-* [TypeScript](https://github.com/Microsoft/TypeScript)
+
 * [React](https://github.com/facebook/react)
-* [React-Native](https://github.com/facebook/react-native)
+* [TypeScript](https://github.com/Microsoft/TypeScript)
 * [React-Leaflet](https://github.com/PaulLeCam/react-leaflet)
 * [Express](https://github.com/expressjs/express)
-* [Expo](https://github.com/expo/expo)
-* [Knex](http://knexjs.org/)
-* [Axios](https://github.com/axios/axios)
-* [SQLite3](https://www.sqlite.org/index.html)
-
-event piloted by [Diego Fernandes](https://github.com/diego3g) from [RocketSeat](https://github.com/Rocketseat).🚀
+* [Prisma](https://www.prisma.io/docs/getting-started)

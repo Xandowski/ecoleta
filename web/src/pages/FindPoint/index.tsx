@@ -1,7 +1,9 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { Marker } from "react-leaflet";
 import Form, { Select } from "../../components/Form/FindForm";
 import Header from "../../components/Header";
+import Mapzone from "../../components/Mapzone";
 import Nav from "../../components/NavBar";
 import Section from "../../components/Section";
 import Main from "../CreatePoint/styles";
@@ -13,15 +15,12 @@ export type UfsProps = {
   sigla: string
 }
 
-export type CitiesProps = {
-
-}
-
 const FindPoint = () => {
   const [ufs, setUfs] = useState<UfsProps[]>([])
   const [selectedUf, setSelectedUf] = useState('0')
   const [cities, setCities] = useState<string[]>([])
-
+  const [selectedCity, setSelectedCity] = useState('0')
+  const [coordinates, setCoordinates] =  useState<[[number, number]]>([[0,0]])
   const { register, handleSubmit, watch, formState: { errors } } = useForm()
 
   useEffect(() => {
@@ -67,7 +66,6 @@ const FindPoint = () => {
       })
   }, [selectedUf])
 
-  
   function handleSelectUf(event: ChangeEvent<HTMLSelectElement>) {
     const uf = event.target.value
 
@@ -76,9 +74,22 @@ const FindPoint = () => {
 
   const onSubmit = (data: {uf: string, city: string}): void => {
     //fazer a requisição para trazer os pontos
-    console.log(data)
+    fetch('http://localhost:3333/point', { 
+      mode: 'cors', 
+      headers: {  
+        "Content-type": "application/json; charset=UTF-8",
+        "Access-Control-Allow-Origin": "*"  
+      }
+    }).then(response => {
+      return response.json()
+    }).then(points => {
+      const coorPoints: ((prevState: [[number, number]]) => [[number, number]]) | any[][] = []
+      points.map(point => {
+        coorPoints.push([Number(point.latitude), Number(point.longitude)])
+      })
+      setCoordinates(coorPoints)
+    })
   }
-
   return(
     <>
       <Header bg="white">
@@ -130,6 +141,20 @@ const FindPoint = () => {
               }  
             </Select>
           </Form>
+             
+            <Mapzone center={coordinates[0]}>
+            {
+                coordinates.map((coor, index) => {
+                  return (
+                    <Marker
+                      key={index} 
+                      position={coor}
+                  />
+                  )
+                })
+              }
+            </Mapzone>
+          
         </Section>
       </Main>
     </>
